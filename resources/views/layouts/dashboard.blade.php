@@ -32,7 +32,7 @@
                     @auth
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('films.index') }}">Home</a>
+                            <a class="nav-link" href="{{ route('logout.perform') }}">Logout</a>
                         </li>
                     </ul>
                     @endauth
