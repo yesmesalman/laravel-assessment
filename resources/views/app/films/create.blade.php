@@ -8,7 +8,6 @@
         </div>
     </div>
     <form id="create-form" method="POST" action="{{ route('films.store') }}" enctype='multipart/form-data'>
-        @csrf
         <div class="row mt-2">
             <div class="col-md-8">
                 <div class="alert alert-danger d-none fails-alert"></div>
@@ -17,7 +16,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" id="name" />
+                            <input type="text" name="name" class="form-control" placeholder="Name" id="name" />
                         </div>
                     </div>
                     <div class="col">

@@ -32,7 +32,7 @@
                     @auth
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('films.index') }}">Films</a>
+                            <a class="nav-link" href="{{ route('films.index') }}">Home</a>
                         </li>
                     </ul>
                     @endauth
@@ -57,7 +57,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    
+
     @yield('footer-scripts')
 </body>
 

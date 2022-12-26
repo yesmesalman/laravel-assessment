@@ -2,10 +2,12 @@
 
 @section('content')
 <div class="container mt-2">
-    <div class="d-flex flex-row-reverse py-3 pr-3 mb-3 bg-light">
+    @auth
+    <div class="d-flex flex-row-reverse py-3 pr-3 bg-light">
         <a class="btn btn-primary" href="{{ route('films.create') }}">Create New Film</a>
     </div>
-    <div class="row justify-content-center films-list mb-5"></div>
+    @endauth
+    <div class="row justify-content-start films-list mt-3 mb-5"></div>
 </div>
 @endsection
 
@@ -24,6 +26,8 @@
 
                 if (e.status) {
                     e.data.forEach(element => {
+                        let rating = element.rating
+
                         html += `<div class="col-md-3 mb-3">
                                     <div class="card film-card">
                                         <div class="card-header">
@@ -31,11 +35,15 @@
                                         </div>
                                         <div class="card-body">
                                             <div>
-                                                <i class='fa fa-star'></i>
+                                                <i class='fa fa-star ${rating >= 1 ? 'fa-star-active' : ''}'></i>
+                                                <i class='fa fa-star ${rating >= 2 ? 'fa-star-active' : ''}'></i>
+                                                <i class='fa fa-star ${rating >= 3 ? 'fa-star-active' : ''}'></i>
+                                                <i class='fa fa-star ${rating >= 4 ? 'fa-star-active' : ''}'></i>
+                                                <i class='fa fa-star ${rating >= 5 ? 'fa-star-active' : ''}'></i>
                                             </div>
                                             <h5 class="card-title">${element.name}</h5>
                                             <p class="card-text">${element.description}</p>
-                                            <a href="/films/${element.slug}" class="btn btn-primary">View Details</a>
+                                            <a href="/films/${element.slug}" class="btn btn-primary">View film details</a>
                                         </div>
                                     </div>
                                 </div> `

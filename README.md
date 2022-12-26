@@ -1,3 +1,6 @@
 composer install
-php artisan migrate
-php artisan db:seed
+php artisan migrate --seed
+
+
+user@gmail.com
+admin123

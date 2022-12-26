@@ -20,4 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 
+// Film Resource
 Route::resource('/films', App\Http\Controllers\Resource\FilmController::class);
+
+// Comment Resource
+Route::resource('/comments', App\Http\Controllers\Resource\CommentController::class);

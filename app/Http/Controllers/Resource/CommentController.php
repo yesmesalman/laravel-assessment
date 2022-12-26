@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Models\Film;
-use App\Models\Genre;
+use App\Models\Comment;
+use Auth;
 use Exception;
 use Validator;
 
-class FilmController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +21,11 @@ class FilmController extends Controller
         if ($request->ajax()) {
             $response = [
                 'status' => true,
-                'message' => 'all films',
-                'data' => Film::get()
+                'message' => 'all comments',
+                'data' => Comment::where('film_id', $request->film_id)->get()
             ];
             return response()->json($response, 200);
         }
-
-        return view('app.films.index');
     }
 
     /**
@@ -38,7 +35,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        return view('app.films.create');
+        //
     }
 
     /**
@@ -53,12 +50,8 @@ class FilmController extends Controller
             try {
                 $validator = Validator::make($request->all(), [
                     'name' => 'required|max:255',
-                    'ticket_price' => 'required|numeric|min:1',
-                    'description' => 'required',
-                    'release_date' => 'required',
-                    'rating' => 'required',
-                    'genre' => 'required|array',
-                    'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+                    'comment' => 'required',
+                    'film_id' => 'required',
                 ]);
 
                 if ($validator->fails()) {
@@ -69,41 +62,17 @@ class FilmController extends Controller
                     return response()->json($response, 200);
                 }
 
-                $photo = '';
-                if ($request->hasFile('photo')) {
-                    $img = $request->file('photo');
-                    $dest = 'assets/banners/';
-                    $obj = time() . "." . $img->getClientOriginalExtension();
-                    $img->move($dest, $obj);
-                    $photo = $dest . $obj;
-                }
 
-                $model = new Film();
+                $model = new Comment();
+                $model->user_id = Auth::id();
                 $model->name = $request->name;
-                $model->slug = Str::slug($request->name, '-');
-                $model->ticket_price = $request->ticket_price;
-                $model->description = $request->description;
-                $model->release_date = $request->release_date;
-                $model->rating = $request->rating;
-                $model->photo = $photo;
+                $model->comment = $request->comment;
+                $model->film_id = $request->film_id;
 
                 if ($model->save()) {
-                    $arr = [];
-
-                    foreach ($request->genre as $e) {
-                        array_push($arr, [
-                            'film_id' => $model->id,
-                            'genre' => $e,
-                            'created_at' => date('Y-m-d H:i:s'),
-                            'updated_at' => date('Y-m-d H:i:s'),
-                        ]);
-                    }
-
-                    Genre::insert($arr);
-
                     $response = [
                         'status' => true,
-                        'message' => 'Congratulations, Film has been added.'
+                        'message' => 'Congratulations, Your Comment has been posted.'
                     ];
                     return response()->json($response, 200);
                 }
@@ -125,17 +94,9 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $film = Film::where('slug', $slug)->with('genres')->first();
-
-        if ($film == null) {
-            return redirect()->route("films.index");
-        }
-
-        return view('app.films.show', [
-            'film' => $film
-        ]);
+        //
     }
 
     /**
