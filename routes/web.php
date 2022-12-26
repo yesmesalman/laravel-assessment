@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/films');
 });
+
+Auth::routes();
+
+
+Route::resource('/films', App\Http\Controllers\Resource\FilmController::class);
