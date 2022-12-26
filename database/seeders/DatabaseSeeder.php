@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         \App\Models\Film::factory(3)->create();
+        $this->call(CommentSeeder::class);
     }
 }
