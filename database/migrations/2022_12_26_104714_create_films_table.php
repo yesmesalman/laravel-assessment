@@ -20,7 +20,7 @@ class CreateFilmsTable extends Migration
             $table->text('description');
             $table->date('release_date');
             $table->enum('rating', [1, 2, 3, 4, 5]);
-            $table->decimal('ticket_price', 4, 2);
+            $table->decimal('ticket_price', 7, 2);
             $table->string('photo');
             $table->timestamps();
         });
