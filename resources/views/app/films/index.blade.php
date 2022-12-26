@@ -23,12 +23,8 @@
                 let html = "";
 
                 if (e.status) {
-                    e.data[1] = e.data[0];
-                    e.data[2] = e.data[0];
-                    e.data[4] = e.data[0];
-                    e.data[3] = e.data[0];
                     e.data.forEach(element => {
-                        html += `<div class="col-md-4 mb-3">
+                        html += `<div class="col-md-3 mb-3">
                                     <div class="card film-card">
                                         <div class="card-header">
                                             <img class="card-img-top" src="${element.photo}" alt="Card image cap">

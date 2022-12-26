@@ -1,25 +1,51 @@
 .inno-navbar {
     background: #fccb90;
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: -webkit-linear-gradient(
+        to right,
+        #ee7724,
+        #d8363a,
+        #dd3675,
+        #b44593
+    );
     background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
-.film-card>.card-header {
+.film-card > .card-header {
     background: none;
     padding: 0;
     width: 100%;
-    height: 400px;
+    height: 300px;
     overflow: hidden;
 }
 
-.film-card>.card-header>.card-img-top {
+.film-card > .card-header > .card-img-top {
     height: 100%;
     width: 100%;
 }
 
 .btn-primary {
     background: #fccb90;
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: -webkit-linear-gradient(
+        to right,
+        #ee7724,
+        #d8363a,
+        #dd3675,
+        #b44593
+    );
     background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
     border-color: #b44593;
+}
+.upload-picture {
+    background-color: #ca3d8314;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.upload-picture>img {
+    height: 100%;
+    width: 100%;
 }
