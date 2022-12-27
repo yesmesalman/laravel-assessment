@@ -11,7 +11,9 @@
                             <div class="card-body p-md-5 mx-md-4">
 
                                 <div class="text-center mb-4 pb-1">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo">
+                                    <a href="{{ route('films.index') }}">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo">
+                                    </a>
                                 </div>
 
                                 <form method="POST" action="{{ route('login') }}">

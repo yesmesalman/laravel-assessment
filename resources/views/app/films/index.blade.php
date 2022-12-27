@@ -7,7 +7,7 @@
         <a class="btn btn-primary" href="{{ route('films.create') }}">Create New Film</a>
     </div>
     @endauth
-    <div class="row justify-content-start films-list mt-3 mb-5"></div>
+    <div class="row justify-content-start films-list mt-3 @guest mt-5 @endguest mb-5"></div>
 </div>
 @endsection
 
@@ -24,9 +24,16 @@
             success: function(e) {
                 let html = "";
 
+                console.log(e)
+
                 if (e.status) {
                     e.data.forEach(element => {
                         let rating = element.rating
+                        let genresHtml = ''
+
+                        element.genres.forEach(x => {
+                            genresHtml += `<span class="badge badge-warning">${x.genre}</span>`
+                        });
 
                         html += `<div class="col-md-3 mb-3">
                                     <div class="card film-card">
@@ -34,6 +41,7 @@
                                             <img class="card-img-top" src="${element.photo}" alt="Card image cap">
                                         </div>
                                         <div class="card-body">
+                                            <div class="mb-1">${genresHtml}</div>
                                             <div>
                                                 <i class='fa fa-star ${rating >= 1 ? 'fa-star-active' : ''}'></i>
                                                 <i class='fa fa-star ${rating >= 2 ? 'fa-star-active' : ''}'></i>
@@ -43,7 +51,7 @@
                                             </div>
                                             <h5 class="card-title">${element.name}</h5>
                                             <p class="card-text">${element.description}</p>
-                                            <a href="/films/${element.slug}" class="btn btn-primary">View film details</a>
+                                            <a href="/films/${element.slug}" class="btn btn-primary">View Film</a>
                                         </div>
                                     </div>
                                 </div> `

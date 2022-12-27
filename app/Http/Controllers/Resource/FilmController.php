@@ -23,7 +23,7 @@ class FilmController extends Controller
             $response = [
                 'status' => true,
                 'message' => 'all films',
-                'data' => Film::get()
+                'data' => Film::with('genres')->get()
             ];
             return response()->json($response, 200);
         }

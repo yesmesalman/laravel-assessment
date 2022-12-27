@@ -76,3 +76,12 @@
     font-size: 14px;
     line-height: 14px;
 }
+
+.go-back {
+    color: #000;
+}
+
+.go-back:hover {
+    color: #000;
+    text-decoration: none;
+}

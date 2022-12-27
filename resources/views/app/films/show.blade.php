@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-3">
+    <div class="d-flex flex-row py-3 pl-3 mb-4 bg-light">
+        <a href="{{ route('films.index') }}" class="go-back">❮ Films</a>
+    </div>
+
     <div class="row">
         <div class="col-md-8 film-view">
             <div>
@@ -44,6 +48,11 @@
                 </form>
             </div>
             @endauth
+            @guest
+            <div class="post-comments-box-guest py-3 px-3 bg-light">
+                <h5>Please <a href="{{ route('login') }}">Login</a> to comment</h5>
+            </div>
+            @endguest
 
         </div>
         <div class="col-md-4">

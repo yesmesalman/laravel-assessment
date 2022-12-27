@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container mt-3">
+    <div class="d-flex flex-row py-3 pl-3 mb-2 bg-light">
+        <a href="{{ route('films.index') }}" class="go-back">❮ Films</a>
+    </div>
+
     <div class="row">
         <div class="col-md-4">
             <h1>Create film</h1>
@@ -55,11 +59,11 @@
                             <label for="genre">Genre:</label>
                             <select id="genre" class="form-control" name="genre[]" multiple>
                                 <option value="" disabled selected>Select Genre</option>
-                                <option value="Comedy">Comedy</option>
-                                <option value="Fighting">Fighting</option>
+                                <option value="Action">Action</option>
                                 <option value="Horror">Horror</option>
-                                <option value="Romantic">Romantic</option>
-                                <option value="Story Based">Story Based</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Science fiction">Science fiction</option>
                             </select>
                         </div>
                     </div>
