@@ -15,4 +15,9 @@ class Film extends Model
     {
         return $this->hasMany(Genre::class);
     }
+
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -83,7 +83,6 @@
                         var html = ''
 
                         e.data.forEach(element => {
-                            console.log("element", element)
                             html += `
                             <div class="card comment mb-2">
                                 <div class="card-body py-3 px-3 d-flex flex-column">

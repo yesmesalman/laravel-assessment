@@ -24,8 +24,6 @@
             success: function(e) {
                 let html = "";
 
-                console.log(e)
-
                 if (e.status) {
                     e.data.forEach(element => {
                         let rating = element.rating
