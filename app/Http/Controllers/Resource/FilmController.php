@@ -80,7 +80,7 @@ class FilmController extends Controller
 
                 $model = new Film();
                 $model->name = $request->name;
-                $model->slug = Str::slug($request->name, '-');
+                $model->slug = Str::slug($request->name, '-') .'-'. time();
                 $model->ticket_price = $request->ticket_price;
                 $model->description = $request->description;
                 $model->release_date = $request->release_date;
